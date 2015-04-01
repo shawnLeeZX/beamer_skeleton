@@ -1,0 +1,158 @@
+%% Choose Different types of output.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \documentclass[handout]{beamer}
+\documentclass{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Load necessary packages.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% mdframed and framed are both used to create frames that could span multiple
+%% pages.
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{framed}
+
+%% fontawesome offers a number of high quality common icon.
+\usepackage{fontawesome}
+%% fontspec deals with font for xelatex, though most of packages load it by
+%% default.
+\usepackage{fontspec}
+
+%% xcolor deals with color and offers \colorbox.
+\usepackage{xcolor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Load a theme.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \usetheme{Berkeley}
+%% \usetheme{Frankfurt}
+%% \usecolortheme{seahorse}
+%% \usecolortheme{rose}
+%% \usetheme{Warsaw}
+%% \usepackage{beamerthemesplit}
+
+%% \usetheme{Warsaw}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Define an color theme.
+%% Customized dark color theme.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>
+
+\setbeamercolor{normal text}{fg=white, bg=black!90}
+\setbeamercolor{structure}{fg=white}
+
+\setbeamercolor{alerted text}{fg=red!85!black}
+
+\setbeamercolor{item projected}{use=item, fg=black, bg=item.fg!35}
+
+\setbeamercolor*{palette primary}{use=structure, fg=structure.fg}
+\setbeamercolor*{palette secondary}{use=structure, fg=structure.fg!95!black}
+\setbeamercolor*{palette tertiary}{use=structure, fg=structure.fg!90!black}
+\setbeamercolor*{palette quaternary}{use=structure, fg=structure.fg!95!black, bg=black!80}
+
+\setbeamercolor*{framesubtitle}{fg=white}
+
+\setbeamercolor*{block title}{parent=structure, bg=black!60}
+\setbeamercolor*{block body}{fg=black, bg=black!10}
+\setbeamercolor*{block title alerted}{parent=alerted text, bg=black!15}
+\setbeamercolor*{block title example}{parent=example text, bg=black!15}
+
+\mode<all>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Title on the footer]{Title}
+%% \subtitle[Subtitle]{Subtitle}
+\author{Shuai Li}
+\date{}
+%% \date{\today}
+%% \institute{Chinese University of Hong Kong}
+
+\def\hmargin{0}
+
+\newmdenv[
+  tikzsetting={draw=white, fill=black, fill opacity=0.7, line width=0pt},
+  backgroundcolor=none,
+  leftmargin=\hmargin,
+  rightmargin=\hmargin,
+  innertopmargin=4pt,
+  skipbelow=\baselineskip,
+  skipabove=\baselineskip,
+  %% roundcorner=4pt
+  leftline=false,
+  rightline=false
+]{TitleBox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\begin{frame}[plain]
+  \vspace{5mm}
+  \begin{TitleBox}
+    {\usebeamercolor[fg]{title}
+    \begin{center}
+      {\LARGE \inserttitle}\linebreak
+      \vspace{5mm}
+
+      {\large \insertauthor}\linebreak
+      \insertinstitute\linebreak
+      \insertdate\linebreak
+    \end{center}
+    \begin{flushright}
+      {\footnotesize
+        %% \href{http://www.falsters.net/daniel}{{\FA \faHome} www.falsters.net/daniel}
+        \href{mailto: lishuai918@gmail.com}{{\faEnvelope}  lishuai918@gmail.com}
+      }
+    \end{flushright}
+  }
+  \end{TitleBox}
+  %% \titlepage{}
+\end{frame}
+
+\section*{Outline}
+\frame{\tableofcontents[pausesections]}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Layout}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\section{Command Test}
+
+\begin{frame}
+  \frametitle{box test}
+  %% Box will not be broken when exceeding line width.
+  \mbox{mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox }
+  \fbox{fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox }
+  \framebox{fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox }
+  \begin{framed}
+    framed framed framed framed
+  \end{framed}
+  \begin{framed}
+    framed framed framed framed framed framed framed framed framed framed framed framed
+  \end{framed}
+  \parbox{0.5\textwidth}{parbox parbox parbox parbox parbox }
+\end{frame}
+
+\begin{frame}
+  \frametitle{box test (continued)}
+  \fbox{
+    \parbox[b][5em][b]{\paperwidth}{Paperwidth fbox using pbox}
+  }
+  \colorbox{red}{Color Box}
+\end{frame}
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
