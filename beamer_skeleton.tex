@@ -1,27 +1,37 @@
 %% Choose Different types of output.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \documentclass[handout]{beamer}
+%% \documentclass[notes=only,handout]{beamer}
+%% \documentclass[notes]{beamer}
+%% \documentclass[draft]{beamer}
 \documentclass{beamer}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \includeonlyframes{walk_in,debrief}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Load necessary packages.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% mdframed and framed are both used to create frames that could span multiple
 %% pages.
 \usepackage[framemethod=tikz]{mdframed}
-\usepackage{framed}
 
 %% fontawesome offers a number of high quality common icon.
 \usepackage{fontawesome}
-%% fontspec deals with font for xelatex, though most of packages load it by
-%% default.
-\usepackage{fontspec}
 
-%% xcolor deals with color and offers \colorbox.
-\usepackage{xcolor}
+%% Table lines.
+\usepackage{booktabs}
+\newcommand{\head}[1]{\textbf{#1}}
+
+%% For citation.
+%% \usepackage[backend=bibtex, style=numeric]{biblatex}
+\usepackage[backend=biber, style=authortitle]{biblatex}
+\bibliography{citations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Load a theme.
+%% Font.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \setmainfont{Times New Roman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Load a theme.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% \usetheme{Berkeley}
 %% \usetheme{Frankfurt}
@@ -40,6 +50,7 @@
 \mode<presentation>
 
 \setbeamercolor{normal text}{fg=white, bg=black!90}
+\setbeamercolor{note page}{fg=black, bg=white!90}
 \setbeamercolor{structure}{fg=white}
 
 \setbeamercolor{alerted text}{fg=red!85!black}
@@ -61,93 +72,130 @@
 \mode<all>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% Style definition for mdframed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\hmargin{-30}
+\def\hinnermargin{20pt}
+\def\vsmallmargin{10pt}
+
+%% Note that the foreground and background colors are set separately from
+%% beamer theme.
+\mdfdefinestyle{description}{
+  tikzsetting={draw=black, fill=black, fill opacity=0.7, line width=0pt},
+  backgroundcolor=none,
+  fontcolor=white,
+  leftmargin=\hmargin,
+  rightmargin=\hmargin,
+  innerleftmargin=\hinnermargin,
+  innerrightmargin=\hinnermargin,
+  innertopmargin=\vsmallmargin,
+  innerbottommargin=\vsmallmargin,
+  skipbelow=\baselineskip,
+  skipabove=\baselineskip
+  %% roundcorner=4pt
+  %% leftline=false,
+  %% rightline=false
+}
+
+\def\vbigmargin{0.5in}
+
+\mdfdefinestyle{heading}{
+  tikzsetting={draw=black, fill=black, fill opacity=0.7, line width=0pt},
+  backgroundcolor=none,
+  fontcolor=white,
+  leftmargin=\hmargin,
+  rightmargin=\hmargin,
+  innertopmargin=\vbigmargin,
+  innerbottommargin=\vbigmargin,
+  skipbelow=\baselineskip,
+  skipabove=\baselineskip
+  %% roundcorner=4pt
+  %% leftline=false,
+  %% rightline=false
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title[Title on the footer]{Title}
+
+%% Environment and command utilities.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{headingframe}{
+  \begin{mdframed}[style=heading]
+    \begin{center}
+}{
+    \end{center}
+  \end{mdframed}
+}
+
+\newcommand{\stresstext}[1]{
+    {\Huge \textsc{#1}}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Section for title, author, institute etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Short Title]{Long Title}
 %% \subtitle[Subtitle]{Subtitle}
-\author{Shuai Li}
+\author{Name}
 \date{}
 %% \date{\today}
 %% \institute{Chinese University of Hong Kong}
-
-\def\hmargin{0}
-
-\newmdenv[
-  tikzsetting={draw=white, fill=black, fill opacity=0.7, line width=0pt},
-  backgroundcolor=none,
-  leftmargin=\hmargin,
-  rightmargin=\hmargin,
-  innertopmargin=4pt,
-  skipbelow=\baselineskip,
-  skipabove=\baselineskip,
-  %% roundcorner=4pt
-  leftline=false,
-  rightline=false
-]{TitleBox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 
-\begin{frame}[plain]
-  \vspace{5mm}
-  \begin{TitleBox}
-    {\usebeamercolor[fg]{title}
-    \begin{center}
-      {\LARGE \inserttitle}\linebreak
+\section*{Walking In}
+%% Cover frame.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Uncomment the usebackgroundtemplate at the beginning and end of the frame to
+%% use image as background.
+%% {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{./image/Solvay_conference_1927.jpg}}
+    \begin{frame}[plain, label=walk_in]
       \vspace{5mm}
+      \begin{mdframed}[style=description]
+          \begin{center}
+            {\Huge \inserttitle}\linebreak
+            \vspace{5mm}
 
-      {\large \insertauthor}\linebreak
-      \insertinstitute\linebreak
-      \insertdate\linebreak
-    \end{center}
-    \begin{flushright}
-      {\footnotesize
-        %% \href{http://www.falsters.net/daniel}{{\FA \faHome} www.falsters.net/daniel}
-        \href{mailto: lishuai918@gmail.com}{{\faEnvelope}  lishuai918@gmail.com}
-      }
-    \end{flushright}
-  }
-  \end{TitleBox}
-  %% \titlepage{}
-\end{frame}
+            {\large \textsc{\insertauthor}}\linebreak
+            \insertinstitute\linebreak
+            \insertdate\linebreak
+          \end{center}
+          \begin{flushright}
+            {\footnotesize
+              \href{mailto: lishuai918@gmail.com}{{\faEnvelope}  lishuai918@gmail.com}
+            }
+          \end{flushright}
+      \end{mdframed}
+      %% \titlepage{}
+    \end{frame}
+%% }
+\note{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Outline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\tableofcontents[pausesections]}
 
 \AtBeginSubsection[]
 {
-  \begin{frame}<beamer>
-    \frametitle{Layout}
+  \begin{frame}<beamer>[allowframebreaks]
+    \frametitle{Table Of Contents}
     \tableofcontents[currentsection,currentsubsection]
   \end{frame}
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Command Test}
 
-\begin{frame}
-  \frametitle{box test}
-  %% Box will not be broken when exceeding line width.
-  \mbox{mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox mbox }
-  \fbox{fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox }
-  \framebox{fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox fbox }
-  \begin{framed}
-    framed framed framed framed
-  \end{framed}
-  \begin{framed}
-    framed framed framed framed framed framed framed framed framed framed framed framed
-  \end{framed}
-  \parbox{0.5\textwidth}{parbox parbox parbox parbox parbox }
+%% {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{./image/cute.jpg}}
+\begin{frame}[label=thank_you]
+  \vspace{-1.5in}
+  \begin{mdframed}[style=description]
+    {\large Thank you.}
+  \end{mdframed}
 \end{frame}
-
-\begin{frame}
-  \frametitle{box test (continued)}
-  \fbox{
-    \parbox[b][5em][b]{\paperwidth}{Paperwidth fbox using pbox}
-  }
-  \colorbox{red}{Color Box}
-\end{frame}
-
+%% }
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
