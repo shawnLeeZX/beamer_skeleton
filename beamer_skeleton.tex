@@ -31,17 +31,9 @@
 %% \setmainfont{Times New Roman}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Load a theme.
+%% Load an outertheme.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \usetheme{Berkeley}
-%% \usetheme{Frankfurt}
-%% \usecolortheme{seahorse}
-%% \usecolortheme{rose}
-%% \usetheme{Warsaw}
-%% \usepackage{beamerthemesplit}
-
-%% \usetheme{Warsaw}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme{miniframes}
 
 
 %% Define an color theme.
@@ -186,6 +178,24 @@
   \end{frame}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Tabular Example}
+
+  \begin{tabular}{|p{0.2\linewidth}|p{0.6\linewidth}|}
+    COL ONE & COL TWO \pause \\
+    COL ONE & COL TWO        \\
+  \end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Automatically In-place Itemize Example}
+
+  \begin{itemize}[<+-| only@+>]
+  \item ONE
+  \item TWO
+  \end{itemize}
+\end{frame}
 
 
 %% {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{./image/cute.jpg}}
