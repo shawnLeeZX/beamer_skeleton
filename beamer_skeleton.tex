@@ -20,6 +20,13 @@
 \usepackage{booktabs}
 \newcommand{\head}[1]{\textbf{#1}}
 
+%% Write verbatim text with math escaped.
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
 %% For citation.
 %% \usepackage[backend=bibtex, style=numeric]{biblatex}
 \usepackage[backend=biber, style=authortitle]{biblatex}
@@ -201,6 +208,15 @@
   \item ONE
   \item TWO
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Verbatim Math}
+
+  \begin{lstlisting}
+                      computation
+    neural systems  $\leftrightarrow$  behavior
+  \end{lstlisting}
 \end{frame}
 
 
