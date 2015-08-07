@@ -27,6 +27,9 @@
   mathescape
 }
 
+% For floating comments.
+\usepackage[absolute,overlay,showboxes]{textpos}
+
 %% For citation.
 %% \usepackage[backend=bibtex, style=numeric]{biblatex}
 \usepackage[backend=biber, style=authortitle]{biblatex}
@@ -210,13 +213,37 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+%% tells beamerthat the frame contents is “fragile.” This means that the frame
+%% contains text that is not “interpreted as usual.” This case applies
+%% to verbatim text, which is, obviously, interpreted somewhat differently from
+%% normal text.
+\begin{frame}[fragile]
   \frametitle{Verbatim Math}
 
+  Hello World.
   \begin{lstlisting}
-                      computation
-    neural systems  $\leftrightarrow$  behavior
+The world is yours.
   \end{lstlisting}
+  Hello World.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Pop Up An Example}
+  Some text.
+  \pause
+
+  \only<2>{
+    \begin{textblock*}{64mm}(32mm,0.25\textheight)
+      \begin{mdframed}[style=description]
+        An awesome example.
+        \begin{itemize}
+        \item ONE
+        \item TWO
+        \end{itemize}
+      \end{mdframed}
+    \end{textblock*}
+  }
 \end{frame}
 
 
