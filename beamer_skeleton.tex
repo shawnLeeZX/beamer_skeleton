@@ -246,6 +246,24 @@ The world is yours.
   }
 \end{frame}
 
+\begin{frame}
+  \frametitle{Multi-Columns}
+  % If one of the column of your text is too long, it may seems that the left
+  % image or corresponding other contents will be dropped down. Normally, if
+  % such case happen, it is mostly due to you arrange you content the wrong
+  % way. However, if such situation does happen, you could add *T* option to
+  % the columns environment, like {columns}[t,onlytextwidth].
+  \begin{columns}[onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \centering
+      \rule{100pt}{150pt}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Some text.
+    \end{column}
+  \end{columns}
+\end{frame}
+
 
 %% {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{./image/cute.jpg}}
 \begin{frame}[label=thank_you]
