@@ -7,3 +7,7 @@ images
 *.pdf
 *.snm
 *.toc
+*.bcf
+*.run.xml
+*.synctex.gz
+*.vrb

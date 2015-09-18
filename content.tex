@@ -1,0 +1,146 @@
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% WHERE THE CONTENT BEGINS
+%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Section for title, author, institute etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Short Title]{Long Title}
+%% \subtitle[Subtitle]{Subtitle}
+\author{Name}
+\date{}
+%% \date{\today}
+%% \institute{Chinese University of Hong Kong}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\section*{Walking In}
+%% Cover frame.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Uncomment the usebackgroundtemplate at the beginning and end of the frame to
+%% use image as background.
+%% {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{./image/Solvay_conference_1927.jpg}}
+    \begin{frame}[plain, label=walk_in]
+      \vspace{5mm}
+      \begin{mdframed}[style=description]
+          \begin{center}
+            {\Huge \inserttitle}\linebreak
+            \vspace{5mm}
+
+            {\large \textsc{\insertauthor}}\linebreak
+            \insertinstitute\linebreak
+            \insertdate\linebreak
+          \end{center}
+          \begin{flushright}
+            {\footnotesize
+              \href{mailto: lishuai918@gmail.com}{{\faEnvelope}  lishuai918@gmail.com}
+            }
+          \end{flushright}
+      \end{mdframed}
+      %% \titlepage{}
+    \end{frame}
+%% }
+\note{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Outline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\tableofcontents[pausesections,hideallsubsections]}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>[allowframebreaks]
+    \frametitle{Table Of Contents}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Tabular Example}
+
+  \begin{tabular}{|p{0.2\linewidth}|p{0.6\linewidth}|}
+    COL ONE & COL TWO \pause \\
+    COL ONE & COL TWO        \\
+  \end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Automatically In-place Itemize Example}
+
+  \begin{itemize}[<+-| only@+>]
+  \item ONE
+  \item TWO
+  \end{itemize}
+\end{frame}
+
+%% tells beamerthat the frame contents is “fragile.” This means that the frame
+%% contains text that is not “interpreted as usual.” This case applies
+%% to verbatim text, which is, obviously, interpreted somewhat differently from
+%% normal text.
+\begin{frame}[fragile]
+  \frametitle{Verbatim Math}
+
+  Hello World.
+  \begin{lstlisting}
+The world is yours.
+  \end{lstlisting}
+  Hello World.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Pop Up An Example}
+  Some text.
+  \pause
+
+  \only<2>{
+    \begin{textblock*}{64mm}(32mm,0.25\textheight)
+      \begin{mdframed}[style=description]
+        An awesome example.
+        \begin{itemize}
+        \item ONE
+        \item TWO
+        \end{itemize}
+      \end{mdframed}
+    \end{textblock*}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Multi-Columns}
+  % If one of the column of your text is too long, it may seems that the left
+  % image or corresponding other contents will be dropped down. Normally, if
+  % such case happen, it is mostly due to you arrange you content the wrong
+  % way. However, if such situation does happen, you could add *T* option to
+  % the columns environment, like {columns}[t,onlytextwidth].
+  \begin{columns}[onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \centering
+      \rule{100pt}{150pt}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Some text.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+%% {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{./image/cute.jpg}}
+\begin{frame}[label=thank_you]
+  \vspace{-1.5in}
+  \begin{mdframed}[style=description]
+    {\large Thank you.}
+  \end{mdframed}
+\end{frame}
+%% }
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
