@@ -1,6 +1,6 @@
-This repository is used for maintaining the exploration made to get to know
-functionality of LaTeX, Beamer and a number of related packages. Contents are
-described in respective sections.
+This repository is the template I used to write LaTeX and Beamer. It also serves
+to maintain the exploration made to get to know functionality of LaTeX, Beamer
+and a number of related packages. Contents are described in respective sections.
 
 ### An Example on How to Make Dark Color Theme for Beamer
 
